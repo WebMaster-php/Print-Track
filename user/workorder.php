@@ -100,7 +100,7 @@
                       foreach ($rows as $row):
                       ?>
                       <tr>
-                        <td><?php echo $row['project_id']; ?></td>
+                        <td><?php echo $row['job_id']; ?></td>
                         <td><?php echo $row['supplier']; ?></td>
                         <td><?php echo $row['customer']; ?></td>
                         <td><?php echo $row['reference']; ?></td> 

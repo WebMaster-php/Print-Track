@@ -61,18 +61,18 @@
       include('alert.php');
       include '../includes/db.php';
       $user_total = 0;
-      $project_total = 0;
+      $job_total = 0;
       $user_sql = "SELECT * FROM users ";
       $user_result = $conn->query($user_sql);
       if ($user_result)
       {
       $user_total = $user_result->num_rows;
       }
-      $project_sql = "SELECT * FROM projects";
-      $project_result = $conn->query($project_sql);
-      if ($project_result)
+      $job_sql = "SELECT * FROM jobs";
+      $job_result = $conn->query($job_sql);
+      if ($job_result)
       {
-      $project_total = $project_result->num_rows;
+      $job_total = $job_result->num_rows;
       }
       $conn->close();
 
@@ -96,7 +96,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6><?php echo $project_total; ?></h6>
+                      <h6><?php echo $job_total; ?></h6>
                     </div>
                   </div>
                 </div>

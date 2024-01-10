@@ -85,7 +85,7 @@
                 <?php
                   include '../includes/db.php';
 
-                  $sql = "SELECT * FROM projects WHERE date_out <= NOW()";
+                  $sql = "SELECT * FROM jobs WHERE date_out <= NOW()";
                   $result = $conn->query($sql);
 
                   // Check if there are rows

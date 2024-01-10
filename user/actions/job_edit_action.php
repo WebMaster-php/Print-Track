@@ -11,8 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $dateOut = $_POST["dateOut"];
     $archived = $_POST["archived"];
 
-    $sql = "UPDATE projects SET supplier='$supplier', customer='$customer', reference='$reference', 
-            invoice='$invoice', date_in='$dateIn', date_out='$dateOut', archived='$archived' WHERE project_id=$id";
+    $sql = "UPDATE jobs SET supplier='$supplier', customer='$customer', reference='$reference', 
+            invoice='$invoice', date_in='$dateIn', date_out='$dateOut', archived='$archived' WHERE job_id=$id";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastr_message'] = [

@@ -17,11 +17,11 @@
   </li><!-- End Users Page Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="projects.php">
+    <a class="nav-link collapsed" href="jobs.php">
       <i class="ri ri-archive-line"></i>
-      <span>Projects</span>
+      <span>Jobs</span>
     </a>
-  </li><!-- End Projects Page Nav -->
+  </li><!-- End jobs Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="workorder.php">

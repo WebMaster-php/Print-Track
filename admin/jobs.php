@@ -95,32 +95,33 @@
                       // Fetch all rows as an associative array
                       $rows = $result->fetch_all(MYSQLI_ASSOC);
 
-                      // Close the connection after fetching data
-                      $conn->close();
-
                       foreach ($rows as $row):
                       ?>
                       <tr>
                           <td><?php echo $row['supplier']; ?></td>
                           <td><?php echo $row['customer']; ?></td>
-                          <td><?php echo $row['reference']; ?></td> 
+                          <td><?php echo $row['reference']; ?></td>
                           <td><?php echo $row['invoice']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
                           <td><?php echo $row['date_out']; ?></td>
-                    
                           <td>
                               <form action="actions/job_delete_action.php" method="POST">
                                   <input type="hidden" name="id" value="<?php echo $row['job_id']; ?>">
-                                  <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                                  <button type="submit" name="delete" class="btn btn-danger">Delete</button>|
                                   <a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning">Edit</a>
                               </form>
+                              
                           </td>
                       </tr>
                       <?php endforeach;
+
+                      // Close the connection after fetching data and processing the loop
+                      $conn->close();
                   } else {
                       echo "No records found";
                   }
                 ?>
+
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->

@@ -10,11 +10,11 @@
   </li><!-- End Dashboard Nav -->
 
   <li class="nav-item">
-    <a class="nav-link collapsed" href="projectnew.php">
+    <a class="nav-link collapsed" href="jobnew.php">
       <i class="ri ri-archive-line"></i>
-      <span>Add Project</span>
+      <span>Add Job</span>
     </a>
-  </li><!-- End Projects Page Nav -->
+  </li><!-- End Jobs Page Nav -->
 
   <li class="nav-item">
     <a class="nav-link collapsed" href="workorder.php">
