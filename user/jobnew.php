@@ -12,13 +12,14 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Work Order List - Print & Track</title>
+  <title>Add New Job - Print & Track</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  
   <!-- Favicons -->
-  <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -35,7 +36,6 @@
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -50,77 +50,67 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Work Order List</h1>
+      <h1>New Job Form</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Work Order</li>
+          <li class="breadcrumb-item">Form</li>
+          <li class="breadcrumb-item active">New</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <!-- ======= toaster ======= -->
-    <?php include('alert.php') ?>
-    <!-- End toaster -->
+     <!-- ======= toaster ======= -->
+     <?php include('alert.php') ?>
+      <!-- End toaster -->
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
-
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Work Order List <button onclick="printPage()" class="btn btn-primary float-end"><i class="bi bi-print"></i> Print</button></h5>
-              <!-- Table with stripped rows -->
-              <table class="table datatable" id="projects">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Supplier</th>
-                    <th>Customer</th>
-                    <th>Reference</th>
-                    <th>Invoice</th>
-                    <th>Date In</th>
-                    <th>Date Out</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <?php
-                  include '../includes/db.php';
-                  $user_id = $_SESSION['user_id'];
-                  $sql = "SELECT * FROM jobs WHERE date_out <= NOW() AND user_id = $user_id";
-                  $result = $conn->query($sql);
+              <h5 class="card-title">New Job Form</h5>
 
-                  // Check if there are rows
-                  if ($result->num_rows > 0) {
-                      // Fetch all rows as an associative array
-                      $rows = $result->fetch_all(MYSQLI_ASSOC);
-
-                      // Close the connection after fetching data
-                      $conn->close();
-
-                      foreach ($rows as $row):
-                      ?>
-                      <tr>
-                        <td><?php echo $row['project_id']; ?></td>
-                        <td><?php echo $row['supplier']; ?></td>
-                        <td><?php echo $row['customer']; ?></td>
-                        <td><?php echo $row['reference']; ?></td> 
-                        <td><?php echo $row['invoice']; ?></td>
-                        <td><?php echo $row['date_in']; ?></td>
-                        <td><?php echo $row['date_out']; ?></td>
-    
-                      </tr>
-                      <?php endforeach;
-                  } else {
-                      echo "No records found";
-                  }
-                ?>
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+              <!-- Vertical Form -->
+              <form class="row g-3" action="actions/job_insert_action.php" method="post">
+                <div class="col-12">
+                  <label for="inputNanme4" class="form-label">Supplier</label>
+                  <input type="text" class="form-control" name="supplier">
+                </div>
+                <div class="col-12">
+                  <label for="inputEmail4" class="form-label">Customer</label>
+                  <input type="text" class="form-control" name="customer" >
+                </div>
+                <div class="col-12">
+                  <label for="inputPassword4" class="form-label">Reference</label>
+                  <input type="text" class="form-control" name="reference" >
+                </div>
+                <div class="col-12">
+                  <label for="inputPassword4" class="form-label">Invoice</label>
+                  <input type="text" class="form-control" name="invoice" >
+                </div>
+                <div class="col-12">
+                  <label for="inputPassword4" class="form-label">Date In</label>
+                  <input type="date" class="form-control" name="dateIn" >
+                </div>
+                <div class="col-12">
+                  <label for="inputPassword4" class="form-label">Date Out</label>
+                  <input type="date" class="form-control" name="dateOut" >
+                </div>
+                <div class="col-12">
+                  <label for="inputAddress" class="form-label">archieved</label>
+                  <select class="form-select" name="archieved" aria-label="Floating label select example">
+                        <option selected>Select menu</option>
+                        <option value="0">Archieved</option>
+                        <option value="1">Unarchieved</option>
+                      </select>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary" name="create">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form><!-- Vertical Form -->
 
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -130,7 +120,7 @@
   <!-- ======= Footer ======= -->
   <?php include('footer.php') ?>
   <!-- End Footer -->
-   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="../assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -144,11 +134,6 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script>
-    function printPage() {
-        window.print();
-    }
-</script>
 </body>
 
 </html>

@@ -84,7 +84,7 @@
           <div class="col-xl-12 content">
             <h3>About Us</h3>
             <p>Welcome to our comprehensive project management platform, where efficiency meets innovation.At Print & Track, we understand the intricate dance of tasks, deadlines, and collaboration that defines successful project execution. Whether you're a seasoned project manager or stepping into this world for the first time, our suite of tools and resources is designed to streamline your workflow, enhance team communication, and drive project success. Explore our intuitive interface, harness the power of smart analytics, and experience a new era of project management excellence with us.</p>
-            <img src="">
+            <img src="front/img/dashboard.png" style="width: 80%; height: auto;" class="mt-5 mb-5">
             <p>Step into a world of organized efficiency and seamless collaboration with our cutting-edge project management platform. At Print & Track, we're dedicated to empowering your projects, big or small, with the tools and support needed to thrive. Navigate complex tasks effortlessly, foster team synergy, and achieve milestones with precision. From planning to execution, our user-friendly interface and robust features are tailored to elevate your project management experience. Join us on the journey to redefine productivity and achieve unparalleled project success.</p>
           </div>
 

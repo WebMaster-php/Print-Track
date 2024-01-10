@@ -12,7 +12,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Projects List - Print & Track</title>
+  <title>jobs List - Print & Track</title>
   <meta content="Print & Track" name="description">
   <meta content="Print & Track" name="keywords">
 
@@ -51,12 +51,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Projects List</h1>
+      <h1>jobs List</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
           <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Projects</li>
+          <li class="breadcrumb-item active">jobs</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -69,7 +69,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Projects List </h5>
+              <h5 class="card-title">jobs List </h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -88,7 +88,7 @@
                 <?php
                   include '../includes/db.php';
                   $user_id = $_SESSION['user_id'];
-                  $sql = "SELECT * FROM projects where archived = 1 and user_id = $user_id";
+                  $sql = "SELECT * FROM jobs where archived = 1 and user_id = $user_id";
                   $result = $conn->query($sql);
 
                   // Check if there are rows
@@ -102,7 +102,7 @@
                       foreach ($rows as $row):
                       ?>
                       <tr>
-                          <td><?php echo $row['project_id']; ?></td>
+                          <td><?php echo $row['job_id']; ?></td>
                           <td><?php echo $row['supplier']; ?></td>
                           <td><?php echo $row['customer']; ?></td>
                           <td><?php echo $row['reference']; ?></td> 
@@ -111,10 +111,10 @@
                           <td><?php echo $row['date_out']; ?></td>
                     
                           <td>
-                              <form action="actions/project_delete_action.php" method="POST">
-                                  <input type="hidden" name="id" value="<?php echo $row['project_id']; ?>">
+                              <form action="actions/job_delete_action.php" method="POST">
+                                  <input type="hidden" name="id" value="<?php echo $row['job_id']; ?>">
                                   <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                  <a href="projectedit.php?id=<?php echo $row['project_id']; ?>" class="btn btn-warning">Edit</a>
+                                  <a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning">Edit</a>
                               </form>
                           </td>
                       </tr>

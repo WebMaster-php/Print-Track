@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2024 at 02:55 PM
+-- Generation Time: Jan 10, 2024 at 04:06 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -24,10 +24,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `projects`
+-- Table structure for table `jobs`
 --
 
-CREATE TABLE `projects` (
+CREATE TABLE `jobs` (
   `project_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `supplier` varchar(255) DEFAULT NULL,
@@ -40,10 +40,10 @@ CREATE TABLE `projects` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `projects`
+-- Dumping data for table `jobs`
 --
 
-INSERT INTO `projects` (`project_id`, `user_id`, `supplier`, `customer`, `reference`, `invoice`, `date_in`, `date_out`, `archived`) VALUES
+INSERT INTO `jobs` (`project_id`, `user_id`, `supplier`, `customer`, `reference`, `invoice`, `date_in`, `date_out`, `archived`) VALUES
 (205, 218, 'Supplier1', 'Customer1', 'Reference1', 'Invoice1', '2022-01-02', '2022-02-02', 1),
 (207, 218, 'Supplier3', 'Customer3', 'Reference3', 'Invoice3', '2022-01-04', '2022-02-04', 1),
 (208, 218, 'Supplier4', 'Customer4', 'Reference4', 'Invoice4', '2022-01-05', '2022-02-05', 0),
@@ -284,9 +284,9 @@ INSERT INTO `users` (`user_id`, `user_name`, `user_email`, `user_password`, `use
 --
 
 --
--- Indexes for table `projects`
+-- Indexes for table `jobs`
 --
-ALTER TABLE `projects`
+ALTER TABLE `jobs`
   ADD PRIMARY KEY (`project_id`);
 
 --
@@ -308,9 +308,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `projects`
+-- AUTO_INCREMENT for table `jobs`
 --
-ALTER TABLE `projects`
+ALTER TABLE `jobs`
   MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=306;
 
 --

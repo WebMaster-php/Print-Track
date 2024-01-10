@@ -12,13 +12,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Work Order List - Print & Track</title>
+  <title>jobs List - Print & Track</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+    <!-- Favicons -->
   <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="icon">
-  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -38,7 +38,8 @@
 
 </head>
 
-<body> 
+<body>
+  
   <!-- ======= Header ======= -->
   <?php include('header.php') ?>
   <!-- End Header -->
@@ -50,25 +51,25 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Work Order List</h1>
+      <h1>Jobs List</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
           <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Work Order</li>
+          <li class="breadcrumb-item active">Jobs</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-    <!-- ======= toaster ======= -->
-    <?php include('alert.php') ?>
-    <!-- End toaster -->
+  <!-- ======= toaster ======= -->
+  <?php include('alert.php') ?>
+  <!-- End toaster -->
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Work Order List </h5>
+              <h5 class="card-title">Jobs List <a class="btn btn-primary float-end" href="jobnew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -79,13 +80,14 @@
                     <th>Invoice</th>
                     <th>Date In</th>
                     <th>Date Out</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
                   include '../includes/db.php';
 
-                  $sql = "SELECT * FROM projects WHERE date_out <= NOW()";
+                  $sql = "SELECT * FROM jobs where archived = 1";
                   $result = $conn->query($sql);
 
                   // Check if there are rows
@@ -105,7 +107,14 @@
                           <td><?php echo $row['invoice']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
                           <td><?php echo $row['date_out']; ?></td>
-    
+                    
+                          <td>
+                              <form action="actions/job_delete_action.php" method="POST">
+                                  <input type="hidden" name="id" value="<?php echo $row['job_id']; ?>">
+                                  <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                                  <a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning">Edit</a>
+                              </form>
+                          </td>
                       </tr>
                       <?php endforeach;
                   } else {
