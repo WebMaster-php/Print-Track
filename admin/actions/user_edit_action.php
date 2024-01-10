@@ -4,10 +4,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $id = $_POST["id"];
     $userName = $_POST["userName"];
     $userEmail = $_POST["userEmail"];
-    $userPassword = $_POST["userPassword"];
     $userStatus = $_POST["userStatus"];
-
-    $sql = "UPDATE users SET user_name='$userName', user_email='$userEmail', user_password='$userPassword', 
+    $encodedPassword = base64_encode($_POST["userPassword"]);
+    $sql = "UPDATE users SET user_name='$userName', user_email='$userEmail', user_password='$encodedPassword', 
             user_status='$userStatus' WHERE user_id=$id";
 
     if ($conn->query($sql) === TRUE) {

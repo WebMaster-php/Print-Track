@@ -13,8 +13,8 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>Projects List - Print & Track</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta content="Print & Track" name="description">
+  <meta content="Print & Track" name="keywords">
 
     <!-- Favicons -->
   <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="icon">

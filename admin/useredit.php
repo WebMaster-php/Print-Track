@@ -91,7 +91,7 @@
                 </div>
                 <div class="col-12">
                   <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>">
+                  <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? base64_decode($row['user_password']) : ''; ?>">
                 </div>
                 <div class="col-12">
                   <label for="inputAddress" class="form-label">Status</label>

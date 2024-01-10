@@ -15,9 +15,9 @@
   <title>User / Profile - Print & Track</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-<!-- Favicons -->
-<link href="../assets/img/PrintAndTrack Icon FINAL.pn" rel="icon">
-  <link href="../assets/img/PrintAndTrack Icon FINAL.pn" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="icon">
+  <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">

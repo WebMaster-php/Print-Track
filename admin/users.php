@@ -105,8 +105,8 @@
                           <td>
                               <form action="actions/user_delete_action.php" method="POST">
                                   <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
-                                  <button type="submit" name="delete">Delete</button>
-                                  <a href="useredit.php?id=<?php echo $row['user_id']; ?>">Edit</a>
+                                  <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                                  <a href="useredit.php?id=<?php echo $row['user_id']; ?>" class="btn btn-warning">Edit</a>
                               </form>
                           </td>
                       </tr>

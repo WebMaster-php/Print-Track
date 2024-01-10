@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = mysqli_fetch_assoc($result);
 
         if ($user) {
-            if ($user['user_status'] == 0) {
+            if ($user['user_status'] == 1) {
                 $_SESSION['user_id'] = $user['user_id'];
                 $_SESSION['username'] = $user['user_name'];
                 $_SESSION['role'] = $user['role'];
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 } else {
                     header('Location: ../user/dashboard.php');
                 }
-            else {
+            }else {
                  $_SESSION['toastr_message'] = [
                 'type' => 'error', // or 'error', 'warning', 'info'
                 'message' => 'Your account is currently temporarily blocked, and you do not have access at the moment.'

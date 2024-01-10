@@ -5,9 +5,9 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home - Append Bootstrap Temlate</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <title>Home - Print & Track</title>
+  <meta content="Home - Print & Track" name="description">
+  <meta content="Home - Print & Track" name="keywords">
 
   <!-- Favicons -->
   <link href="assets/img/PrintAndTrack Icon FINAL.png" rel="icon">
@@ -46,7 +46,7 @@
       <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu">
         <ul>
-          
+          <li class="float-end"><a href="">signup</a></li>
         </ul>
 
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
