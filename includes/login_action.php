@@ -12,24 +12,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $user = mysqli_fetch_assoc($result);
 
         if ($user) {
-            $_SESSION['user_id'] = $user['user_id'];
-            $_SESSION['username'] = $user['user_name'];
-            $_SESSION['role'] = $user['role'];
-            $_SESSION['toastr_message'] = [
-            'type' => 'success', // or 'error', 'warning', 'info'
-            'message' => 'Login Successfuly'
-            ];
-            if ($user['role'] == 'admin') {
-                header('Location: ../admin/dashboard.php');
-            } else {
-                header('Location: ../user/dashboard.php');
+            if ($user['user_status'] == 0) {
+                $_SESSION['user_id'] = $user['user_id'];
+                $_SESSION['username'] = $user['user_name'];
+                $_SESSION['role'] = $user['role'];
+                $_SESSION['toastr_message'] = [
+                'type' => 'success', // or 'error', 'warning', 'info'
+                'message' => 'Login Successfuly'
+                ];
+                if ($user['role'] == 'admin') {
+                    header('Location: ../admin/dashboard.php');
+                } else {
+                    header('Location: ../user/dashboard.php');
+                }
+            else {
+                 $_SESSION['toastr_message'] = [
+                'type' => 'error', // or 'error', 'warning', 'info'
+                'message' => 'Your account is currently temporarily blocked, and you do not have access at the moment.'
+                ];
+                header("Location: ../login.php");
+                exit();
             }
         } else {
             $_SESSION['toastr_message'] = [
             'type' => 'error', // or 'error', 'warning', 'info'
             'message' => 'Invalid username or password'
             ];
-           header("Location: ../signup.php");
+           header("Location: ../login.php");
            exit();
         }
     } else {
@@ -37,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'type' => 'error', // or 'error', 'warning', 'info'
             'message' => 'Database query error'
         ];
-        header("Location: ../signup.php");
+        header("Location: ../login.php");
         exit();
     }
 }
