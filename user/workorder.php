@@ -68,9 +68,9 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Work Order List </h5>
+              <h5 class="card-title">Work Order List <button onclick="printPage()" class="btn btn-primary float-end"><i class="bi bi-print"></i> Print</button></h5>
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable" id="projects">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -86,7 +86,7 @@
                 <?php
                   include '../includes/db.php';
                   $user_id = $_SESSION['user_id'];
-                  $sql = "SELECT * FROM projects where archived = 1 and user_id =  $user_id";
+                  $sql = "SELECT * FROM projects WHERE date_out <= NOW() AND user_id = $user_id";
                   $result = $conn->query($sql);
 
                   // Check if there are rows
@@ -144,6 +144,11 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script>
+    function printPage() {
+        window.print();
+    }
+</script>
 </body>
 
 </html>

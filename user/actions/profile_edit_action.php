@@ -6,14 +6,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $userName = $_POST["userName"];
     $userEmail = $_POST["userEmail"];
     $userPassword = $_POST["userPassword"];
-    $userStatus = $_POST["userStatus"];
 
     $sql = "UPDATE users SET user_name='$userName', user_email='$userEmail', user_password='$userPassword' WHERE user_id=$id";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastr_message'] = [
             'type' => 'success', // or 'error', 'warning', 'info'
-            'message' => 'User updated successfully'
+            'message' => 'Profile updated successfully'
         ];
         header("Location: ../profile.php");  
     } else {

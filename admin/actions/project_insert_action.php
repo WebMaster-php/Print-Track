@@ -1,4 +1,5 @@
 <?php
+session_start();
 	include '../../includes/db.php';
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["create"])) {
 	    $supplier = $_POST["supplier"];

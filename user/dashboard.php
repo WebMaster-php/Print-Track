@@ -88,7 +88,7 @@
                 <?php
                   include '../includes/db.php';
                   $user_id = $_SESSION['user_id'];
-                  $sql = "SELECT * FROM projects where archived = 0 and user_id = $user_id";
+                  $sql = "SELECT * FROM projects where archived = 1 and user_id = $user_id";
                   $result = $conn->query($sql);
 
                   // Check if there are rows

@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastr_message'] = [
             'type' => 'success', // or 'error', 'warning', 'info'
-            'message' => 'User updated successfully'
+            'message' => 'Profile updated successfully'
         ];
         header("Location: ../profile.php");
         

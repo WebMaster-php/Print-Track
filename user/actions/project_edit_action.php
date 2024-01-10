@@ -1,4 +1,5 @@
 <?php
+session_start();
 include '../../includes/db.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $id = $_POST["id"];
@@ -16,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastr_message'] = [
                 'type' => 'success', // or 'error', 'warning', 'info'
-                'message' => 'Record added successfuly'
+                'message' => 'Record updated successfuly'
         ];
         header("Location: ../dashboard.php");
     } else {

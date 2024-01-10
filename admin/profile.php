@@ -81,16 +81,16 @@
               <form class="row g-3" action="actions/profile_edit_action.php" method="post">
                 <div class="col-12">
                   <label for="inputNanme4" class="form-label">User Name</label>
-                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>">
+                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>" require>
                   <input type="text" class="form-control" name="id" hidden value="<?php echo isset($row) ? 1 : ''; ?>">
                 </div>
                 <div class="col-12">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>">
+                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>" require>
                 </div>
                 <div class="col-12">
                   <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>">
+                  <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>" require>
                 </div>
                 
                 <div class="text-center">
