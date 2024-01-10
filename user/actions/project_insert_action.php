@@ -7,10 +7,10 @@
 	    $invoice = $_POST["invoice"];
 	    $dateIn = $_POST["dateIn"];
 	    $dateOut = $_POST["dateOut"];
-			$archieved = $_POST["archieved"];
-
-	    $sql = "INSERT INTO projects (supplier, customer, reference, invoice, date_in, date_out, archived) 
-	            VALUES ('$supplier', '$customer', '$reference', '$invoice', '$dateIn', '$dateOut', '$archieved')";
+		$archieved = $_POST["archieved"];
+		$user_id = $_SESSION['user_id'];
+	    $sql = "INSERT INTO projects (supplier, customer, reference, invoice, date_in, date_out, archived,user_id) 
+	            VALUES ('$supplier', '$customer', '$reference', '$invoice', '$dateIn', '$dateOut', '$archieved', '$user_id')";
 
 	    if ($conn->query($sql) === TRUE) {
 				$_SESSION['toastr_message'] = [
