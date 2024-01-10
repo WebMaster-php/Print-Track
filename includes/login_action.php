@@ -1,42 +1,45 @@
 <?php
 include '../includes/db.php';
 session_start();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['userName'];
+    $password = $_POST['userPassword'];
+    $encodedPassword = base64_encode($password);
+    $query = "SELECT * FROM users WHERE user_name = '$username' AND user_password = '$encodedPassword'";
+    $result = mysqli_query($conn, $query);
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["login"])) {
-    $userName = $_POST["userName"];
-    $userPassword = $_POST["userPassword"];
+    if ($result) {
+        $user = mysqli_fetch_assoc($result);
 
-    $sql = "SELECT * FROM users WHERE userName='$userName'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-
-        // Verify password
-        if (password_verify($userPassword, $row['userPassword'])) {
-            $_SESSION['user_id'] = $row['ID'];
-            $_SESSION['userName'] = $row['userName'];
+        if ($user) {
+            $_SESSION['user_id'] = $user['user_id'];
+            $_SESSION['username'] = $user['user_name'];
+            $_SESSION['role'] = $user['role'];
             $_SESSION['toastr_message'] = [
-			    'type' => 'success', // or 'error', 'warning', 'info'
-			    'message' => 'This is a sample toastr message.'
-			];
-			 header("Location: admin/dashboard.php");
-            exit();
+            'type' => 'success', // or 'error', 'warning', 'info'
+            'message' => 'Login Successfuly'
+            ];
+            if ($user['role'] == 'admin') {
+                header('Location: ../admin/dashboard.php');
+            } else {
+                header('Location: ../user/dashboard.php');
+            }
         } else {
-            echo "Invalid password!";
-             $_SESSION['toastr_message'] = [
-			    'type' => 'error', // or 'error', 'warning', 'info','success'
-			    'message' => 'Invalid password!.'
-			];
+            $_SESSION['toastr_message'] = [
+            'type' => 'error', // or 'error', 'warning', 'info'
+            'message' => 'Invalid username or password'
+            ];
+           header("Location: ../signup.php");
+           exit();
         }
     } else {
         $_SESSION['toastr_message'] = [
-			    'type' => 'error', // or 'error', 'warning', 'info','success'
-			    'message' => 'User not found!.'
-			];
-			header("Location: ../login.php");
+            'type' => 'error', // or 'error', 'warning', 'info'
+            'message' => 'Database query error'
+        ];
+        header("Location: ../signup.php");
+        exit();
     }
 }
-
 $conn->close();
 ?>

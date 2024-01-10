@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+      header('Location: ../login.php');
+      exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,11 +38,7 @@
 
 </head>
 
-<body>
-  <!-- ======= toaster ======= -->
-  <?php include('alert.php') ?>
-  <!-- End toaster -->
-  
+<body> 
   <!-- ======= Header ======= -->
   <?php include('header.php') ?>
   <!-- End Header -->
@@ -56,7 +59,9 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
+    <!-- ======= toaster ======= -->
+    <?php include('alert.php') ?>
+    <!-- End toaster -->
     <section class="section">
       <div class="row">
         <div class="col-lg-12">

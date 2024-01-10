@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
+      header('Location: ../login.php');
+      exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,8 +39,7 @@
 <body>
   
   <!-- ======= Header ======= -->
-  <?php session_start();
-  include('header.php') ?>
+  <?php include('header.php') ?>
   <!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
@@ -60,11 +66,12 @@
         <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Vertical Form</h5>
+              <h5 class="card-title">User Form</h5>
               <?php
                 if (true) {
                     include '../includes/db.php';
-                    $sql = "SELECT * FROM users WHERE user_id=1";
+                    $id = $_SESSION['user_id'];
+                    $sql = "SELECT * FROM users WHERE user_id=$id";
                     $result = $conn->query($sql);
                     $row = $result->fetch_assoc();
                     $conn->close();
@@ -85,14 +92,7 @@
                   <label for="inputPassword4" class="form-label">Password</label>
                   <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>">
                 </div>
-                <div class="col-12">
-                  <label for="inputAddress" class="form-label">Status</label>
-                  <select class="form-select" name="userStatus" aria-label="Floating label select example">
-                        <option selected>Select menu</option>
-                        <option value="1" <?php if (isset($row) && $row['user_status'] == 1) { echo "selected"; } ?>>Active</option>
-                        <option value="0" <?php if (isset($row) && $row['user_status'] == 0) { echo "selected"; } ?>>Inactive</option>
-                      </select>
-                </div>
+                <!--  -->
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary" name="update">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>

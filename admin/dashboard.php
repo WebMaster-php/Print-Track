@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+      header('Location: ../login.php');
+      exit();
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,10 +38,6 @@
 </head>
 
 <body>
-  <!-- ======= toaster ======= -->
-  <?php include('alert.php') ?>
-  <!-- End toaster -->
-
   <!-- ======= Header ======= -->
   <?php include('header.php') ?>
   <!-- End Header -->
@@ -44,7 +47,6 @@
   <!-- End Sidebar-->
 
   <main id="main" class="main">
-
     <div class="pagetitle">
       <h1>Dashboard</h1>
       <nav>
@@ -54,7 +56,28 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
+    <!-- ======= toaster ======= -->
+    <?php 
+      include('alert.php');
+      include '../includes/db.php';
+      $user_total = 0;
+      $project_total = 0;
+      $user_sql = "SELECT * FROM users ";
+      $user_result = $conn->query($user_sql);
+      if ($user_result)
+      {
+      $user_total = $user_result->num_rows;
+      }
+      $project_sql = "SELECT * FROM projects";
+      $project_result = $conn->query($project_sql);
+      if ($project_result)
+      {
+      $project_total = $project_result->num_rows;
+      }
+      $conn->close();
 
+    ?>
+    <!-- End toaster -->
     <section class="section dashboard">
       <div class="row">
 
@@ -73,7 +96,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>145</h6>
+                      <h6><?php echo $project_total; ?></h6>
                     </div>
                   </div>
                 </div>
@@ -92,7 +115,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
+                      <h6>$0</h6>
 
                     </div>
                   </div>
@@ -107,14 +130,14 @@
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Total <span>| Customers</span> </h5>
+                  <h5 class="card-title">Total <span>| Users</span> </h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>1244</h6>
+                      <h6><?php echo $user_total; ?></h6>
 
                     </div>
                   </div>

@@ -6,10 +6,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $userName = $_POST["userName"];
     $userEmail = $_POST["userEmail"];
     $userPassword = $_POST["userPassword"];
-    $userStatus = $_POST["userStatus"];
 
-    $sql = "UPDATE users SET user_name='$userName', user_email='$userEmail', user_password='$userPassword', 
-            user_status='$userStatus' WHERE user_id=$id";
+    $sql = "UPDATE users SET user_name='$userName', user_email='$userEmail', user_password='$userPassword' WHERE user_id=$id";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastr_message'] = [
