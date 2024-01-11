@@ -77,10 +77,10 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="row g-3 needs-validation" action="includes/signup_action.php" method="post">
+                  <form class="row g-3 needs-validation" action="includes/signup_action.php" method="post" autocomplete="off">
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>
-                      <input type="email" name="userEmail" class="form-control" id="yourEmail" required>
+                      <input type="email" name="userEmail" class="form-control" id="yourEmail" required autocomplete="off">
                       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                     </div>
 
@@ -88,24 +88,24 @@
                       <label for="yourUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="userName" class="form-control" id="yourUsername" required>
+                        <input type="text" name="userName" class="form-control" id="yourUsername" required autocomplete="off">
                         <div class="invalid-feedback">Please choose a username.</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="userPassword" class="form-control" id="yourPassword" required>
+                      <input type="password" name="userPassword" class="form-control" id="yourPassword" required autocomplete="off">
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
 
-                    <!-- <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                        <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                        <div class="invalid-feedback">You must agree before submitting.</div>
-                      </div>
-                    </div> -->
+                    <div class="col-12">
+                        <label for="card-holder-name" class="form-label">Cardholder Name</label>
+                        <input type="text" id="card-holder-name" name="card-holder-name" required class="form-control">
+
+                        <label for="card-element" class="form-label">Credit or debit card</label>
+                        <div id="card-element"></div>
+                    </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit" name="signup">Create Account</button>
                     </div>
@@ -134,6 +134,8 @@
   <script src="../assets/css/js/toastr.min.js"></script> 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="assets/js/stripe.js" defer></script>
 
 </body>
 

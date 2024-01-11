@@ -1,0 +1,6 @@
+{
+    "require": {
+        "stripe/stripe-php": "^13.8",
+        "paypal/rest-api-sdk-php": "^1.14"
+    }
+}
