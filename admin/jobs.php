@@ -4,6 +4,7 @@
       header('Location: ../login.php');
       exit();
   }
+  $page="jobs";
 ?>
 <!DOCTYPE html>
 <html lang="en">

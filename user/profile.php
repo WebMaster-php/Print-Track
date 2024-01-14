@@ -4,6 +4,7 @@
       header('Location: ../login.php');
       exit();
   }
+  $page="profile";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,7 +67,7 @@
         <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">User Form</h5>
+              <h5 class="card-title text-center">User Profile Form</h5>
               <?php
                   include '../includes/db.php';
                   $id = $_SESSION['user_id'];

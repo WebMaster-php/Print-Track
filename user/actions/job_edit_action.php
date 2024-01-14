@@ -9,11 +9,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     $invoice = $_POST["invoice"];
     $dateIn = $_POST["dateIn"];
     $dateOut = $_POST["dateOut"];
-    $archived = $_POST["archived"];
+    $archieved = $_POST["archieved"];
     $consignment = $_POST["consignment"];
     $notes = $_POST['notes'];
     $sql = "UPDATE jobs SET supplier='$supplier', customer='$customer', reference='$reference', 
-            invoice='$invoice', date_in='$dateIn', date_out='$dateOut', archived='$archived', notes='$notes', consignment='$consignment' WHERE job_id=$id";
+            invoice='$invoice', date_in='$dateIn', date_out='$dateOut', archived='$archieved', notes='$notes', consignment='$consignment' WHERE job_id=$id";
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['toastr_message'] = [

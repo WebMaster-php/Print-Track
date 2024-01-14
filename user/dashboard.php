@@ -4,6 +4,7 @@
       header('Location: ../login.php');
       exit();
   }
+  $page="dashboard";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +72,7 @@
             <div class="card-body">
               <h5 class="card-title text-center">Jobs List <a class="btn btn-danger button-left" href="jobnew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
               <!-- Table with stripped rows -->
-              <table class="table datatable table-responsive">
+              <table class="table datatable table-responsive" id="jobData">
                 <thead>
                   <tr>
                     <th>ID</th>
@@ -101,6 +102,17 @@
                       $conn->close();
 
                       foreach ($rows as $row):
+                        $currentDate = strtotime(date('Y-m-d')); // Get current date in timestamp
+                        $dateOut = strtotime($row['date_out']); // Convert date_out to timestamp
+                
+                        // Check conditions for date styling
+                        if ($dateOut < $currentDate) {
+                            $dateStyle = 'red-background';
+                        } elseif ($dateOut <= strtotime('+2 days', $currentDate)) {
+                            $dateStyle = 'yellow-background';
+                        } else {
+                            $dateStyle = ''; // Default style
+                        }
                       ?>
                       <tr>
                           <td><?php echo $row['job_id']; ?></td>
@@ -110,7 +122,7 @@
                           <td><?php echo $row['invoice']; ?></td>
                           <td><?php echo $row['consignment']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
-                          <td ><?php echo $row['date_out']; ?></td>
+                          <td><span class="<?php echo $dateStyle;?>"><?php echo $row['date_out']; ?></span></td>
                     
                           <td>
                             <a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>
@@ -151,6 +163,20 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script>
+    jQuery(document).ready(function ($) {
+      var dataTable = $('#jobData').DataTable({
+            // DataTable options
+        });
+
+        // Make rows clickable
+        $('#jobData tbody').on('click', 'tr', function () {
+            var data = dataTable.row(this).data();
+            // Assuming the 'job_id' is a unique identifier for each job
+            window.location.href = 'jobdetails.php?id=' + data.job_id;
+        });
+    });
+
 </body>
 
 </html>

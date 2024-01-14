@@ -4,6 +4,7 @@
       header('Location: ../login.php');
       exit();
   }
+  $page="users";
 ?>
 <!DOCTYPE html>
 <html lang="en">

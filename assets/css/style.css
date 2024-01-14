@@ -1244,7 +1244,8 @@ h6 {
   color: #012970;
 }
 .red-background {
-  background-color: red;
+  background-color: red !important;
+  color:white;
 }
 
 .yellow-background {
