@@ -67,7 +67,7 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Edit User Form</h5>
+              <h5 class="card-title text-center">Edit User Form</h5>
               <?php
                 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
                     include '../includes/db.php';
@@ -79,30 +79,52 @@
                 }
               ?>
               <!-- Vertical Form -->
-              <form class="row g-3" action="actions/user_edit_action.php" method="post">
-                <div class="col-12">
+              <form class="row g-3" action="actions/profile_edit_action.php" method="post">
+                <div class="col-6">
                   <label for="inputNanme4" class="form-label">User Name</label>
-                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>">
-                  <input type="text" class="form-control" name="id" hidden value="<?php echo isset($row) ? $row['user_id'] : ''; ?>">
+                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>" required disabled>
+                  <input type="text" class="form-control" name="id" hidden value="<?php echo isset($row) ? 1 : ''; ?>">
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>">
+                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>" required disabled>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Business Name</label>
+                  <input type="text" class="form-control" name="userBusinessName" value="<?php echo isset($row) ? $row['user_b_name'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Address</label>
+                  <input type="text" class="form-control" name="userAddress" value="<?php echo isset($row) ? $row['user_address'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">State</label>
+                  <input type="text" class="form-control" name="userState" value="<?php echo isset($row) ? $row['user_state'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Postcode</label>
+                  <input type="text" class="form-control" name="userPostcode" value="<?php echo isset($row) ? $row['user_postcode'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Contact Number</label>
+                  <input type="phone" class="form-control" name="userPhone" value="<?php echo isset($row) ? $row['user_phone'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
                   <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? base64_decode($row['user_password']) : ''; ?>">
+                  <input type="password" min="8" max="10" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>" required>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputAddress" class="form-label">Status</label>
-                  <select class="form-select" name="userStatus" aria-label="Floating label select example">
-                        <option selected>Select menu</option>
-                        <option value="1" <?php if (isset($row) && $row['user_status'] == 1) { echo "selected"; } ?>>Active</option>
-                        <option value="0" <?php if (isset($row) && $row['user_status'] == 0) { echo "selected"; } ?>>Inactive</option>
-                      </select>
+                  <select class="form-select" name="userStatus" aria-label="Floating label select example" requiredd>
+                      <option value="" selected>Select menu</option>
+                      <option value="1" <?php echo ($row['user_status'] == 1) ? 'selected' : ''; ?>>Active</option>
+                      <option value="0" <?php echo ($row['user_status'] == 0) ? 'selected' : ''; ?>>Inactive</option>
+                  </select>
+
                 </div>
+                <!--  -->
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary" name="update">Submit</button>
+                  <button type="submit" class="btn btn-danger" name="update">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
               </form><!-- Vertical Form -->

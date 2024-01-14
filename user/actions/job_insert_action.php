@@ -8,10 +8,12 @@
 	    $invoice = $_POST["invoice"];
 	    $dateIn = $_POST["dateIn"];
 	    $dateOut = $_POST["dateOut"];
-		$archieved = $_POST["archieved"];
-		$user_id = $_SESSION['user_id'];
-	    $sql = "INSERT INTO jobs (supplier, customer, reference, invoice, date_in, date_out, archived,user_id) 
-	            VALUES ('$supplier', '$customer', '$reference', '$invoice', '$dateIn', '$dateOut', '$archieved', '$user_id')";
+			$archieved = $_POST["archieved"];
+			$user_id = $_SESSION['user_id'];
+			$consignment = $_POST["consignment"];
+			$notes = $_POST['notes'];
+	    $sql = "INSERT INTO jobs (supplier, customer, reference, invoice, date_in, date_out, archived,user_id,notes, consignment) 
+	            VALUES ('$supplier', '$customer', '$reference', '$invoice', '$dateIn', '$dateOut', '$archieved', '$user_id', '$notes', '$consignment')";
 
 	    if ($conn->query($sql) === TRUE) {
 				$_SESSION['toastr_message'] = [

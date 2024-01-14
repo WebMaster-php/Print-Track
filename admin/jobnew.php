@@ -67,44 +67,54 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">New Job Form</h5>
+              <h5 class="card-title text-center">New Job Form</h5>
 
               <!-- Vertical Form -->
               <form class="row g-3" action="actions/job_insert_action.php" method="post">
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputNanme4" class="form-label">Supplier</label>
                   <input type="text" class="form-control" name="supplier">
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputEmail4" class="form-label">Customer</label>
                   <input type="text" class="form-control" name="customer" >
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputPassword4" class="form-label">Reference</label>
                   <input type="text" class="form-control" name="reference" >
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputPassword4" class="form-label">Invoice</label>
                   <input type="text" class="form-control" name="invoice" >
                 </div>
-                <div class="col-12">
+                <div class="col-6">
+                  <label for="inputPassword4" class="form-label">Consignment</label>
+                  <input type="text" class="form-control" name="consignment">
+                </div>
+                <div class="col-6">
+                  <label for="inputPassword4" class="form-label">Notes</label>
+                  <input type="text" class="form-control" name="notes">
+                </div>
+                <div class="col-6">
                   <label for="inputPassword4" class="form-label">Date In</label>
                   <input type="date" class="form-control" name="dateIn" >
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputPassword4" class="form-label">Date Out</label>
                   <input type="date" class="form-control" name="dateOut" >
                 </div>
                 <div class="col-12">
-                  <label for="inputAddress" class="form-label">archieved</label>
-                  <select class="form-select" name="archieved" aria-label="Floating label select example">
-                        <option selected>Select menu</option>
-                        <option value="0">Archieved</option>
-                        <option value="1">Unarchieved</option>
-                      </select>
+                  <input class="form-check-input" type="radio" name="archieved" id="gridRadios1" value="0" require>
+                  <label class="form-check-label" for="gridRadios1">
+                  Archieved
+                  </label>
+                  <input class="form-check-input" type="radio" name="archieved" id="gridRadios1" value="1" require>
+                  <label class="form-check-label" for="gridRadios1">
+                  Unarchieved
+                  </label>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary" name="create">Submit</button>
+                  <button type="submit" class="btn btn-danger" name="create">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
                 </div>
               </form><!-- Vertical Form -->

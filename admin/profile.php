@@ -66,31 +66,48 @@
         <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-              <h5 class="card-title">User Form</h5>
+              <h5 class="card-title text-center">User Form</h5>
               <?php
-                if (true) {
-                    include '../includes/db.php';
-                    $id = $_SESSION['user_id'];
-                    $sql = "SELECT * FROM users WHERE user_id=$id";
-                    $result = $conn->query($sql);
-                    $row = $result->fetch_assoc();
-                    $conn->close();
-                }
+                  include '../includes/db.php';
+                  $id = $_SESSION['user_id'];
+                  $sql = "SELECT * FROM users WHERE user_id=$id";
+                  $result = $conn->query($sql);
+                  $row = $result->fetch_assoc();
+                  $conn->close();
               ?>
               <!-- Vertical Form -->
               <form class="row g-3" action="actions/profile_edit_action.php" method="post">
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputNanme4" class="form-label">User Name</label>
-                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>" require>
-                  <input type="text" class="form-control" name="id" hidden value="<?php echo isset($row) ? 1 : ''; ?>">
+                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>" required disabled>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
                   <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>" require>
+                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>" required disabled>
                 </div>
-                <div class="col-12">
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Business Name</label>
+                  <input type="text" class="form-control" name="userBusinessName" value="<?php echo isset($row) ? $row['user_b_name'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Address</label>
+                  <input type="text" class="form-control" name="userAddress" value="<?php echo isset($row) ? $row['user_address'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">State</label>
+                  <input type="text" class="form-control" name="userState" value="<?php echo isset($row) ? $row['user_state'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Postcode</label>
+                  <input type="text" class="form-control" name="userPostcode" value="<?php echo isset($row) ? $row['user_postcode'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
+                  <label for="inputEmail4" class="form-label">Contact Number</label>
+                  <input type="phone" class="form-control" name="userPhone" value="<?php echo isset($row) ? $row['user_phone'] : ''; ?>" required>
+                </div>
+                <div class="col-6">
                   <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>" require>
+                  <input type="password" class="form-control" name="userPassword" value="<?php echo base64_decode($row['user_password']); ?>" required>
                 </div>
                 
                 <div class="text-center">

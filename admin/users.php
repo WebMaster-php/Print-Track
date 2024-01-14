@@ -69,7 +69,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Users List <a class="btn btn-primary float-end" href="usernew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
+              <h5 class="card-title text-center">Users List <a class="btn btn-danger button-left" href="usernew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -105,8 +105,8 @@
                           <td>
                               <form action="actions/user_delete_action.php" method="POST">
                                   <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
-                                  <button type="submit" name="delete" class="btn btn-danger">Delete</button>
-                                  <a href="useredit.php?id=<?php echo $row['user_id']; ?>" class="btn btn-warning">Edit</a>
+                                  <button type="submit" name="delete" class="btn btn-danger py-0">Delete</button>
+                                  <a href="useredit.php?id=<?php echo $row['user_id']; ?>" class="btn btn-warning py-0">Edit</a>
                               </form>
                           </td>
                       </tr>

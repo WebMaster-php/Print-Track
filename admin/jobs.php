@@ -69,7 +69,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Jobs List <a class="btn btn-primary float-end" href="jobnew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
+              <h5 class="card-title text-center">Jobs List <a class="btn btn-danger button-left" href="jobnew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -78,6 +78,7 @@
                     <th>Customer</th>
                     <th>Reference</th>
                     <th>Invoice</th>
+                    <th>Consignment</th>
                     <th>Date In</th>
                     <th>Date Out</th>
                     <th>Action</th>
@@ -102,15 +103,10 @@
                           <td><?php echo $row['customer']; ?></td>
                           <td><?php echo $row['reference']; ?></td>
                           <td><?php echo $row['invoice']; ?></td>
+                          <td><?php echo $row['consignment']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
                           <td><?php echo $row['date_out']; ?></td>
-                          <td>
-                              <form action="actions/job_delete_action.php" method="POST">
-                                  <input type="hidden" name="id" value="<?php echo $row['job_id']; ?>">
-                                  <button type="submit" name="delete" class="btn btn-danger">Delete</button>|
-                                  <a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning">Edit</a>
-                              </form>
-                              
+                          <td><a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>   
                           </td>
                       </tr>
                       <?php endforeach;

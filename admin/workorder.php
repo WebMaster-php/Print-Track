@@ -68,7 +68,7 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Work Order List </h5>
+              <h5 class="card-title text-center">Work Order List <button onclick="printPage()" class="btn btn-danger button-left"><i class="bi bi-print"></i> Print</button></h5>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
@@ -142,6 +142,11 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script>
+    function printPage() {
+        window.print();
+    }
+</script>
 </body>
 
 </html>

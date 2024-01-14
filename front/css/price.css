@@ -1,0 +1,78 @@
+section {
+  overflow: unset;
+}
+.price-bg {
+  background: #e84545;
+  color: #fff;
+  padding: 100px 0;
+}
+.pricing-area {
+  margin-top: -170px;
+}
+.single-price {
+  text-align: center;
+  background: #fff;
+  transition: .7s;
+  margin-top: 20px;
+  border-radius: 20px;
+  color: #e84545;
+}
+.single-price h3 {
+  font-size: 25px;
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  margin-top: -80px;
+  font-family: poppins;
+  color: #e84545;
+}
+.single-price h4 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #e84545;
+}
+.single-price h4 span.period {
+  font-size: 15px;
+  text-transform: initial;
+  font-weight: 700;
+}
+.single-price h4 span.currency {
+  font-size: 30px;
+  font-weight: 600;
+}
+.deal-top {
+  position: relative;
+  background: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 70px 24px 0;
+  color: #e84545;
+  border-radius: 20px;
+}
+
+.deal-bottom ul {
+  margin: 0;
+  padding: 0;
+}
+.deal-bottom  ul li {
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+  margin-top: 16px;
+  padding: 10px 10px 0 10px;
+  list-style: none;
+}
+.btn-area a {
+  display: inline-block;
+  font-size: 18px;
+  color: #fff;
+  background: #e84545;
+  padding: 8px 64px;
+  margin-top: 32px;
+  border-radius: 4px; 
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+}

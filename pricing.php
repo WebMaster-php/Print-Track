@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Home - Print & Track</title>
+  <title>Pricing - Print & Track</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -27,6 +27,7 @@
 
   <!-- Template Main CSS File -->
   <link href="front/css/main.css" rel="stylesheet">
+  <link href="front/css/price.css" rel="stylesheet">
 
 </head>
 
@@ -57,21 +58,42 @@
   </header><!-- End Header -->
 
   <main id="main">
-    <div data-aos="fade" class="page-title">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-12">
-              <h1>Welcome to our Website</h1>
-              <p class="mb-0 justify-center">Welcome to our comprehensive project management platform, where efficiency meets innovation.At Print & Track, we understand the intricate dance of tasks, deadlines, and collaboration that defines successful project execution. Whether you're a seasoned project manager or stepping into this world for the first time, our suite of tools and resources is designed to streamline your workflow, enhance team communication, and drive project success. Explore our intuitive interface, harness the power of smart analytics, and experience a new era of project management excellence with us.</p>
-            <img src="front/img/dashboard.png" style="width: 100%; height: auto;" class="mt-5 mb-5">
-            <p class="mb-0 justify-center">Step into a world of organized efficiency and seamless collaboration with our cutting-edge project management platform. At Print & Track, we're dedicated to empowering your projects, big or small, with the tools and support needed to thrive. Navigate complex tasks effortlessly, foster team synergy, and achieve milestones with precision. From planning to execution, our user-friendly interface and robust features are tailored to elevate your project management experience. Join us on the journey to redefine productivity and achieve unparalleled project success.</p>
-            </div>
-          </div>
-        </div>
+  <section class="price m-0 price-bg">
+    <div class="row ">
+      <div class="col-12">
+        <h1 class="text-center text-white">Price</h1>
       </div>
     </div>
-
+  </section>
+  <section id="about" class="about">
+    <div class="pricing-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 col-sm-6 col-xs-12">
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="single-price">
+              <div class="deal-top">
+                <h4><span class="currency">$</span>49<span class="period">/month (AUD)</span></h4>
+              </div>
+              <div class="deal-bottom">
+                <ul class="deal-item">
+                  <li>Experience seamless project management with our cutting-edge software, available through a convenient monthly subscription of just $49.00</li>
+                  <li>There are no joining fees, subscribe today and unlock the full potential of streamlined workflows</li>
+                  <li>You can cancel any time from within your client dashboard.</li>
+                </ul>
+                <div class="btn-area">
+                  <a href="signup.php">Sign Up</a>       
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-6 col-xs-12">
+          </div>
+        </div>
+      </div>       
+    </div>
+  </section><!-- End About Section -->
   </main>
 
   <!-- ======= Footer ======= -->

@@ -166,6 +166,12 @@ h6 {
   }
 }
 
+@media (min-width: 767px) {
+  .card-title .button-left {
+    top: 110px !important;
+  }
+}
+
 @keyframes dropdown-animate {
   0% {
     opacity: 0;
@@ -238,6 +244,12 @@ h6 {
   font-weight: 500;
   color: #012970;
   font-family: "Poppins", sans-serif;
+}
+
+.card-title .button-left {
+  position: absolute;
+  top: 73px !important;
+  right: 250px;
 }
 
 .card-title span {
@@ -1230,4 +1242,11 @@ h6 {
   text-align: center;
   font-size: 13px;
   color: #012970;
+}
+.red-background {
+  background-color: red;
+}
+
+.yellow-background {
+  background-color: yellow;
 }
