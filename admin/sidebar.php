@@ -25,6 +25,13 @@
   </li><!-- End jobs Page Nav -->
 
   <li class="nav-item">
+    <a class="nav-link <?php if ($page != 'archieved') { echo 'collapsed'; }?>" href="archieved_jobs.php">
+      <i class="ri ri-archive-line"></i>
+      <span>Archieved Jobs</span>
+    </a>
+  </li><!-- End jobs Page Nav -->
+
+  <li class="nav-item">
     <a class="nav-link <?php if ($page != 'workorder') { echo 'collapsed'; }?>" href="workorder.php">
       <i class="bi bi-cart"></i>
       <span>Work Order</span>

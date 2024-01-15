@@ -1,10 +1,10 @@
 <?php
   session_start();
-  if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'admin') {
+  if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'user') {
       header('Location: ../login.php');
       exit();
   }
-  $page="jobs";
+  $page="archieved";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,13 +13,13 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>jobs List - Print & Track</title>
+  <title>Archieved Jobs List - Print & Track</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-    <!-- Favicons -->
+  <!-- Favicons -->
   <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="icon">
-  <link href="../assets/img/PrintAndTrack Icon FINAL.png" rel="apple-touch-icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -40,7 +40,6 @@
 </head>
 
 <body>
-  
   <!-- ======= Header ======= -->
   <?php include('header.php') ?>
   <!-- End Header -->
@@ -52,44 +51,43 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Jobs List</h1>
+      <h1>Archieved Jobs List</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
           <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Jobs</li>
+          <li class="breadcrumb-item active">Archieved Jobs</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-  <!-- ======= toaster ======= -->
-  <?php include('alert.php') ?>
-  <!-- End toaster -->
+    <!-- ======= toaster ======= -->
+    <?php include('alert.php') ?>
+    <!-- End toaster -->
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">Jobs List <a class="btn btn-danger button-left" href="jobnew.php"> New <i class="bi bi-plus"></i>  <span></span></a></h5>
+              <h5 class="card-title text-center">Archieved Jobs List <button onclick="printPage()" class="btn btn-danger button-left"><i class="bi bi-print"></i> Print</button></h5>
               <!-- Table with stripped rows -->
-              <table class="table datatable">
+              <table class="table datatable" id="projects">
                 <thead>
                   <tr>
+                    <th>ID</th>
                     <th>Supplier</th>
                     <th>Customer</th>
                     <th>Reference</th>
                     <th>Invoice</th>
-                    <th>Consignment</th>
                     <th>Date In</th>
                     <th>Date Out</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
                 <?php
                   include '../includes/db.php';
-
-                  $sql = "SELECT * FROM jobs where archived = 1";
+                  $user_id = $_SESSION['user_id'];
+                  $sql = "SELECT * FROM jobs WHERE archived = 0 and user_id = $user_id";
                   $result = $conn->query($sql);
 
                   // Check if there are rows
@@ -97,28 +95,26 @@
                       // Fetch all rows as an associative array
                       $rows = $result->fetch_all(MYSQLI_ASSOC);
 
+                      // Close the connection after fetching data
+                      $conn->close();
+
                       foreach ($rows as $row):
                       ?>
                       <tr>
-                          <td><?php echo $row['supplier']; ?></td>
-                          <td><?php echo $row['customer']; ?></td>
-                          <td><?php echo $row['reference']; ?></td>
-                          <td><?php echo $row['invoice']; ?></td>
-                          <td><?php echo $row['consignment']; ?></td>
-                          <td><?php echo $row['date_in']; ?></td>
-                          <td><?php echo $row['date_out']; ?></td>
-                          <td><a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>|<button class="btn btn-primary py-0" data-toggle="modal" data-target="#notificationModal">Show Notes</button>  
-                          </td>
+                        <td><?php echo $row['job_id']; ?></td>
+                        <td><?php echo $row['supplier']; ?></td>
+                        <td><?php echo $row['customer']; ?></td>
+                        <td><?php echo $row['reference']; ?></td> 
+                        <td><?php echo $row['invoice']; ?></td>
+                        <td><?php echo $row['date_in']; ?></td>
+                        <td><?php echo $row['date_out']; ?></td>
+    
                       </tr>
                       <?php endforeach;
-
-                      // Close the connection after fetching data and processing the loop
-                      $conn->close();
                   } else {
                       echo "No records found";
                   }
                 ?>
-
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
@@ -129,27 +125,7 @@
         </div>
       </div>
     </section>
-    <!-- Your modal content -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal Content Goes Here</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <!-- You can add additional buttons here if needed -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Your other HTML content -->
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -170,17 +146,10 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
   <script>
-    function openModal() {
-      alert('here');
-        var modal = document.getElementById('notificationbodyModal');
-        modal.style.display = 'block';
+    function printPage() {
+        window.print();
     }
-
-    function closeModal() {
-        var modal = document.getElementById('notificationbodyModal');
-        modal.style.display = 'none';
-    }
-  </script>
+</script>
 </body>
 
 </html>
