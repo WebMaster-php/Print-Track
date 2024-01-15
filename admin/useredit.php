@@ -68,68 +68,71 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">Edit User Form</h5>
-              <?php
-                if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
-                    include '../includes/db.php';
-                    $id = $_GET["id"];
-                    $sql = "SELECT * FROM users WHERE user_id=$id";
-                    $result = $conn->query($sql);
-                    $row = $result->fetch_assoc();
-                    $conn->close();
-                }
-              ?>
-              <!-- Vertical Form -->
-              <form class="row g-3" action="actions/profile_edit_action.php" method="post">
-                <div class="col-6">
-                  <label for="inputNanme4" class="form-label">User Name</label>
-                  <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>" required disabled>
-                  <input type="text" class="form-control" name="id" hidden value="<?php echo isset($row) ? 1 : ''; ?>">
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>" required disabled>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Business Name</label>
-                  <input type="text" class="form-control" name="userBusinessName" value="<?php echo isset($row) ? $row['user_b_name'] : ''; ?>" required>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Address</label>
-                  <input type="text" class="form-control" name="userAddress" value="<?php echo isset($row) ? $row['user_address'] : ''; ?>" required>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">State</label>
-                  <input type="text" class="form-control" name="userState" value="<?php echo isset($row) ? $row['user_state'] : ''; ?>" required>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Postcode</label>
-                  <input type="text" class="form-control" name="userPostcode" value="<?php echo isset($row) ? $row['user_postcode'] : ''; ?>" required>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Contact Number</label>
-                  <input type="phone" class="form-control" name="userPhone" value="<?php echo isset($row) ? $row['user_phone'] : ''; ?>" required>
-                </div>
-                <div class="col-6">
-                  <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" min="8" max="10" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>" required>
-                </div>
-                <div class="col-6">
-                  <label for="inputAddress" class="form-label">Status</label>
-                  <select class="form-select" name="userStatus" aria-label="Floating label select example" requiredd>
-                      <option value="" selected>Select menu</option>
-                      <option value="1" <?php echo ($row['user_status'] == 1) ? 'selected' : ''; ?>>Active</option>
-                      <option value="0" <?php echo ($row['user_status'] == 0) ? 'selected' : ''; ?>>Inactive</option>
-                  </select>
+              <div class="row">
+                <div class="col-lg-8">
+                  <h5 class="card-title text-center">Edit User Form</h5>
+                  <?php
+                    if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
+                        include '../includes/db.php';
+                        $id = $_GET["id"];
+                        $sql = "SELECT * FROM users WHERE user_id=$id";
+                        $result = $conn->query($sql);
+                        $row = $result->fetch_assoc();
+                        $conn->close();
+                    }
+                  ?>
+                  <!-- Vertical Form -->
+                  <form class="row g-3" action="actions/profile_edit_action.php" method="post">
+                    <div class="col-12">
+                      <label for="inputNanme4" class="form-label">User Name</label>
+                      <input type="text" class="form-control" name="userName" value="<?php echo isset($row) ? $row['user_name'] : ''; ?>" required disabled>
+                      <input type="text" class="form-control" name="id" hidden value="<?php echo isset($row) ? 1 : ''; ?>">
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Email</label>
+                      <input type="email" class="form-control" name="userEmail" value="<?php echo isset($row) ? $row['user_email'] : ''; ?>" required disabled>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Business Name</label>
+                      <input type="text" class="form-control" name="userBusinessName" value="<?php echo isset($row) ? $row['user_b_name'] : ''; ?>" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Address</label>
+                      <input type="text" class="form-control" name="userAddress" value="<?php echo isset($row) ? $row['user_address'] : ''; ?>" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">State</label>
+                      <input type="text" class="form-control" name="userState" value="<?php echo isset($row) ? $row['user_state'] : ''; ?>" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Postcode</label>
+                      <input type="text" class="form-control" name="userPostcode" value="<?php echo isset($row) ? $row['user_postcode'] : ''; ?>" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Contact Number</label>
+                      <input type="phone" class="form-control" name="userPhone" value="<?php echo isset($row) ? $row['user_phone'] : ''; ?>" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputPassword4" class="form-label">Password</label>
+                      <input type="password" min="8" max="10" class="form-control" name="userPassword" value="<?php echo isset($row) ? $row['user_password'] : ''; ?>" required>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label">Status</label>
+                      <select class="form-select" name="userStatus" aria-label="Floating label select example" requiredd>
+                          <option value="" selected>Select menu</option>
+                          <option value="1" <?php echo ($row['user_status'] == 1) ? 'selected' : ''; ?>>Active</option>
+                          <option value="0" <?php echo ($row['user_status'] == 0) ? 'selected' : ''; ?>>Inactive</option>
+                      </select>
 
+                    </div>
+                    <!--  -->
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-danger" name="update">Submit</button>
+                      <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                  </form><!-- Vertical Form -->
                 </div>
-                <!--  -->
-                <div class="text-center">
-                  <button type="submit" class="btn btn-danger" name="update">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- Vertical Form -->
-
+              </div>
             </div>
           </div>
         </div>

@@ -92,7 +92,7 @@
                         <div class="invalid-feedback">Please choose a username.</div>
                       </div>
                     </div>
-
+                    <input type="hidden" id="payment-method-id" name="payment_method_id" />
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
                       <input type="password" name="userPassword" class="form-control" id="yourPassword" required autocomplete="off">

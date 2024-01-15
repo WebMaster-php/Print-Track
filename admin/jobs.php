@@ -98,6 +98,29 @@
                       $rows = $result->fetch_all(MYSQLI_ASSOC);
 
                       foreach ($rows as $row):
+                        $currentDate = new DateTime(); // Get current date
+                        $dateOut = DateTime::createFromFormat('Y-m-d', $row['date_out']); // Convert date_out to DateTime object
+
+                        $rangeStart = clone $currentDate;
+                        $rangeStart->modify('-3 day'); // Three days before the current date
+
+                        $rangeEnd = clone $currentDate;
+                        $rangeEnd->modify('-1 day'); // One day before the current date
+
+                        // Extract only date parts for comparison
+                        $currentDate = $currentDate->format('Y-m-d');
+                        $dateOut = $dateOut->format('Y-m-d');
+                        $rangeStart = $rangeStart->format('Y-m-d');
+                        $rangeEnd = $rangeEnd->format('Y-m-d');
+
+                        // Check conditions for date styling
+                        if ($dateOut > $rangeStart && $dateOut <= $rangeEnd) {
+                            $dateStyle = 'yellow-background';
+                        } elseif ($dateOut == $currentDate) {
+                            $dateStyle = 'red-background';
+                        } else {
+                            $dateStyle = ''; // Default style
+                        }
                       ?>
                       <tr>
                           <td><?php echo $row['supplier']; ?></td>
@@ -106,8 +129,8 @@
                           <td><?php echo $row['invoice']; ?></td>
                           <td><?php echo $row['consignment']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
-                          <td><?php echo $row['date_out']; ?></td>
-                          <td><a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>|<button class="btn btn-primary py-0" data-toggle="modal" data-target="#notificationModal">Show Notes</button>  
+                          <td><span class="<?php echo $dateStyle;?>"><?php echo $row['date_out']; ?></span></td>
+                          <td><a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>| <button type="button" class="btn btn-primary py-0" onclick="openModal('<?php echo $row['notes']; ?>')" data-bs-toggle="modal" data-bs-target="#basicModal">Show Notes</button>
                           </td>
                       </tr>
                       <?php endforeach;
@@ -129,27 +152,20 @@
         </div>
       </div>
     </section>
-    <!-- Your modal content -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal Title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal Content Goes Here</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <!-- You can add additional buttons here if needed -->
-                </div>
+     <!-- Basic Modal -->
+      <div class="modal fade" id="basicModal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Notes</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body" id="modal-body">
+              
+            </div>
+          </div>
         </div>
-    </div>
-    <!-- Your other HTML content -->
+      </div>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -170,15 +186,9 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
   <script>
-    function openModal() {
-      alert('here');
-        var modal = document.getElementById('notificationbodyModal');
-        modal.style.display = 'block';
-    }
-
-    function closeModal() {
-        var modal = document.getElementById('notificationbodyModal');
-        modal.style.display = 'none';
+   function openModal(notes) {
+        var targetElement = document.getElementById('modal-body');
+        targetElement.innerHTML = notes;
     }
   </script>
 </body>

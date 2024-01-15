@@ -102,14 +102,26 @@
                       $conn->close();
 
                       foreach ($rows as $row):
-                        $currentDate = strtotime(date('Y-m-d')); // Get current date in timestamp
-                        $dateOut = strtotime($row['date_out']); // Convert date_out to timestamp
-                
+                        $currentDate = new DateTime(); // Get current date
+                        $dateOut = DateTime::createFromFormat('Y-m-d', $row['date_out']); // Convert date_out to DateTime object
+
+                        $rangeStart = clone $currentDate;
+                        $rangeStart->modify('-3 day'); // Three days before the current date
+
+                        $rangeEnd = clone $currentDate;
+                        $rangeEnd->modify('-1 day'); // One day before the current date
+
+                        // Extract only date parts for comparison
+                        $currentDate = $currentDate->format('Y-m-d');
+                        $dateOut = $dateOut->format('Y-m-d');
+                        $rangeStart = $rangeStart->format('Y-m-d');
+                        $rangeEnd = $rangeEnd->format('Y-m-d');
+
                         // Check conditions for date styling
-                        if ($dateOut < $currentDate) {
-                            $dateStyle = 'red-background';
-                        } elseif ($dateOut <= strtotime('+2 days', $currentDate)) {
+                        if ($dateOut > $rangeStart && $dateOut <= $rangeEnd) {
                             $dateStyle = 'yellow-background';
+                        } elseif ($dateOut == $currentDate) {
+                            $dateStyle = 'red-background';
                         } else {
                             $dateStyle = ''; // Default style
                         }

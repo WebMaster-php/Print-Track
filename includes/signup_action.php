@@ -1,6 +1,7 @@
 <?php
 include '../includes/db.php';
 require_once '../vendor/autoload.php';
+require_once 'functions.php';
 \Stripe\Stripe::setApiKey(STRIPE_TEST_SECRET_KEY);
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -22,6 +23,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $sql = "INSERT INTO users (user_name, user_email, user_password) 
                     VALUES ('$userName', '$userEmail', '$encodedPassword')";
                 $result = $conn->query($sql);
+                $templatePath = 'email_template.html';
+                $date = date('d-m-Y');
+                $data = array(
+                    'client_name' => $userName,
+                    'client_email' => $userEmail,
+                    'date' => $date
+                );
+                $htmlBody = loadTemplate($templatePath, $data);
+
+                // Send the email
+                sendEmail($userEmail, $userName, $htmlBody);
                 if ($result === TRUE) {
                     $user_id = $conn->insert_id;
                     $_SESSION['toastr_message'] = [

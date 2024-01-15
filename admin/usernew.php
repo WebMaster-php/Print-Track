@@ -69,56 +69,59 @@
         <div class="col-lg-12">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title text-center">New User Form</h5>
+              <div class="row">
+                <div class="col-lg-8">
+                  <h5 class="card-title text-center">New User Form</h5>
 
-              <!-- Vertical Form -->
-              <form class="row g-3" action="actions/user_insert_action.php" method="post">
-                <div class="col-6">
-                  <label for="inputNanme4" class="form-label">User Name</label>
-                  <input type="text" class="form-control"  name="userName" require>
+                  <!-- Vertical Form -->
+                  <form class="row g-3" action="actions/user_insert_action.php" method="post">
+                    <div class="col-12">
+                      <label for="inputNanme4" class="form-label">User Name</label>
+                      <input type="text" class="form-control"  name="userName" require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Email</label>
+                      <input type="email" class="form-control" name="userEmail" require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Business Name</label>
+                      <input type="text" class="form-control" name="userBusinessName"  require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Address</label>
+                      <input type="text" class="form-control" name="userAddress"  require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">State</label>
+                      <input type="text" class="form-control" name="userState" require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Postcode</label>
+                      <input type="text" class="form-control" name="userPostcode"  require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputEmail4" class="form-label">Contact Number</label>
+                      <input type="phone" class="form-control" name="userPhone" require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputPassword4" class="form-label">Password</label>
+                      <input type="password" class="form-control" name="userPassword" require>
+                    </div>
+                    <div class="col-12">
+                      <label for="inputAddress" class="form-label">Status</label>
+                      <select class="form-select" name="userStatus" aria-label="Floating label select example" require>
+                            <option selected>Select menu</option>
+                            <option value="1">Active</option>
+                            <option value="0">Inactive</option>
+                          </select>
+                    </div>
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-primary" name="signup">Submit</button>
+                      <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                  </form><!-- Vertical Form -->
                 </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Email</label>
-                  <input type="email" class="form-control" name="userEmail" require>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Business Name</label>
-                  <input type="text" class="form-control" name="userBusinessName"  require>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Address</label>
-                  <input type="text" class="form-control" name="userAddress"  require>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">State</label>
-                  <input type="text" class="form-control" name="userState" require>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Postcode</label>
-                  <input type="text" class="form-control" name="userPostcode"  require>
-                </div>
-                <div class="col-6">
-                  <label for="inputEmail4" class="form-label">Contact Number</label>
-                  <input type="phone" class="form-control" name="userPhone" require>
-                </div>
-                <div class="col-6">
-                  <label for="inputPassword4" class="form-label">Password</label>
-                  <input type="password" class="form-control" name="userPassword" require>
-                </div>
-                <div class="col-6">
-                  <label for="inputAddress" class="form-label">Status</label>
-                  <select class="form-select" name="userStatus" aria-label="Floating label select example" require>
-                        <option selected>Select menu</option>
-                        <option value="1">Active</option>
-                        <option value="0">Inactive</option>
-                      </select>
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary" name="signup">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- Vertical Form -->
-
+              </div>
             </div>
           </div>
         </div>

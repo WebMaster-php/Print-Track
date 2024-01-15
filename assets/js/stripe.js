@@ -31,7 +31,21 @@ document.addEventListener('DOMContentLoaded', function () {
       hiddenInput.setAttribute('name', 'stripeToken');
       hiddenInput.setAttribute('value', token.id);
       form.appendChild(hiddenInput);
-
+      stripe.createPaymentMethod({
+            type: 'card',
+            card: card,
+            billing_details: {
+                name: document.getElementById('card-holder-name').value
+            }
+        }).then(function (result) {
+            if (result.error) {
+                // Handle error
+                var errorElement = document.getElementById('card-errors');
+                errorElement.textContent = result.error.message;
+            } else {
+                document.getElementById('payment-method-id').value = result.paymentMethod.id;
+            }
+        });
       // Submit the form
       form.submit();
   }
