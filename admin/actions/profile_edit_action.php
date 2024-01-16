@@ -5,11 +5,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["update"])) {
     try {
         $id = $_SESSION["user_id"];
         $encodedPassword = base64_encode($_POST["userPassword"]);
-        $user_b_name = $_POST["userBusinessName"];
-        $user_address = $_POST["userAddress"];
-        $user_state = $_POST["userState"];
-        $user_postcode = $_POST["userPostcode"];
-        $user_phone = $_POST["userPhone"];
+        $user_b_name = mysqli_real_escape_string($conn,$_POST["userBusinessName"]);
+        $user_address = mysqli_real_escape_string($conn,$_POST["userAddress"]);
+        $user_state = mysqli_real_escape_string($conn,$_POST["userState"]);
+        $user_postcode = mysqli_real_escape_string($conn,$_POST["userPostcode"]);
+        $user_phone = mysqli_real_escape_string($conn,$_POST["userPhone"]);
         $sql = "UPDATE users SET user_password='$encodedPassword', user_b_name='$user_b_name', user_address='$user_address', user_state='$user_state', user_postcode='$user_postcode', user_phone='$user_phone' WHERE user_id=$id";
 
         if ($conn->query($sql) === TRUE) {

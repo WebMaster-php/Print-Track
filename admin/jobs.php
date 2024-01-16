@@ -33,7 +33,6 @@
   <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
-
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
 
@@ -130,7 +129,7 @@
                           <td><?php echo $row['consignment']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
                           <td><span class="<?php echo $dateStyle;?>"><?php echo $row['date_out']; ?></span></td>
-                          <td><a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>| <button type="button" class="btn btn-primary py-0" onclick="openModal('<?php echo $row['notes']; ?>')" data-bs-toggle="modal" data-bs-target="#basicModal">Show Notes</button>
+                          <td><a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>|<a href="show.php?id=<?php echo $row['job_id']; ?>" class="btn btn-primary py-0"><i class="bi bi-eye"></i></a>
                           </td>
                       </tr>
                       <?php endforeach;
@@ -152,20 +151,6 @@
         </div>
       </div>
     </section>
-     <!-- Basic Modal -->
-      <div class="modal fade" id="basicModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Notes</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id="modal-body">
-              
-            </div>
-          </div>
-        </div>
-      </div>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -182,15 +167,10 @@
   <script src="../assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="../assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script>
-   function openModal(notes) {
-        var targetElement = document.getElementById('modal-body');
-        targetElement.innerHTML = notes;
-    }
-  </script>
 </body>
 
 </html>

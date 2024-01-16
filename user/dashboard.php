@@ -135,10 +135,11 @@
                           <td><?php echo $row['consignment']; ?></td>
                           <td><?php echo $row['date_in']; ?></td>
                           <td><span class="<?php echo $dateStyle;?>"><?php echo $row['date_out']; ?></span></td>
-                    
                           <td>
                             <a href="jobedit.php?id=<?php echo $row['job_id']; ?>" class="btn btn-warning py-0">Edit</a>
-                          </td>
+                            <span class="mx-1">|</span>
+                            <a href="show.php?id=<?php echo $row['job_id']; ?>" class="btn btn-primary py-0"><i class="bi bi-eye"></i></a>
+                        </td>
                       </tr>
                       <?php endforeach;
                   } else {
@@ -175,19 +176,6 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script>
-    jQuery(document).ready(function ($) {
-      var dataTable = $('#jobData').DataTable({
-            // DataTable options
-        });
-
-        // Make rows clickable
-        $('#jobData tbody').on('click', 'tr', function () {
-            var data = dataTable.row(this).data();
-            // Assuming the 'job_id' is a unique identifier for each job
-            window.location.href = 'jobdetails.php?id=' + data.job_id;
-        });
-    });
 
 </body>
 

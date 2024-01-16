@@ -4,15 +4,15 @@ include '../../includes/db.php';
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["signup"])) {
     try {
-        $userName = $_POST["userName"];
-        $userEmail = $_POST["userEmail"];
+        $userName = mysqli_real_escape_string($conn,$_POST["userName"]);
+        $userEmail = mysqli_real_escape_string($conn,$_POST["userEmail"]);
         $encodedPassword = base64_encode($_POST["userPassword"]);
         $userStatus = $_POST["userStatus"];
-        $user_b_name = $_POST["userBusinessName"];
-        $user_address = $_POST["userAddress"];
-        $user_state = $_POST["userState"];
-        $user_postcode = $_POST["userPostcode"];
-        $user_phone = $_POST["userPhone"];
+        $user_b_name = mysqli_real_escape_string($conn,$_POST["userBusinessName"]);
+        $user_address = mysqli_real_escape_string($conn,$_POST["userAddress"]);
+        $user_state = mysqli_real_escape_string($conn,$_POST["userState"]);
+        $user_postcode = mysqli_real_escape_string($conn,$_POST["userPostcode"]);
+        $user_phone = mysqli_real_escape_string($conn,$_POST["userPhone"]);
 
         $sql = "INSERT INTO users (user_name, user_email, user_password, user_status,user_b_name,user_address,user_state,user_postcode,user_phone) 
                 VALUES ('$userName', '$userEmail', '$encodedPassword', '$userStatus', '$user_b_name', '$user_address', '$user_state', '$user_postcode', '$user_phone')";
