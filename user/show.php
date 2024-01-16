@@ -66,51 +66,57 @@
       <div class="row">
         <div class="col-lg-12">
 
-		<div class="card">
-            <div class="card-body">
-              <h5 class="card-title text-center">Job Details </h5>
+		      <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title text-center">Job Details</h5>
 
-				<?php
-				include '../includes/db.php';
+                  <?php
+                  include '../includes/db.php';
 
-				// Check if the ID parameter is set in the URL
-				if (isset($_GET['id'])) {
-				    $jobId = $_GET['id'];
+                  // Check if the ID parameter is set in the URL
+                  if (isset($_GET['id'])) {
+                      $jobId = $_GET['id'];
 
-				    // Fetch data for the specific job using the job ID
-				    $sql = "SELECT * FROM jobs WHERE job_id = $jobId";
-				    $result = $conn->query($sql);
+                      // Fetch data for the specific job using the job ID
+                      $sql = "SELECT * FROM jobs WHERE job_id = $jobId";
+                      $result = $conn->query($sql);
 
-				    if ($result->num_rows > 0) {
-				        $row = $result->fetch_assoc();
-				        // Display the details
-				        ?>
-				    <div>
-			            <ul>
-			                <li><strong>Supplier: </strong><?php echo $row['supplier']; ?></li>
-			                <li><strong>Customer: </strong><?php echo $row['customer']; ?></li>
-			                <li><strong>Reference: </strong><?php echo $row['reference']; ?></li>
-			                <li><strong>Invoice: </strong><?php echo $row['invoice']; ?></li>
-			                <li><strong>Date In: </strong><?php echo $row['date_in']; ?></li>
-			                <li><strong>Date Out: </strong><?php echo $row['date_out']; ?></li>
-			                <li><strong>Notes: </strong><?php echo $row['notes']; ?></li>
-			                <li><strong>Consignment: </strong><?php echo $row['consignment']; ?></li>
-			            </ul>
-			        </div>
-				<?php
-				    } else {
-				        echo "Job not found.";
-				    }
-				} else {
-				    echo "Invalid request. Please provide a job ID.";
-				}
+                      if ($result->num_rows > 0) {
+                          $row = $result->fetch_assoc();
+                          // Display the details
+                          ?>
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <ul class="list-group">
+                                      <li class="list-group-item"><strong>Supplier:</strong> <?php echo $row['supplier']; ?></li>
+                                      <li class="list-group-item"><strong>Customer:</strong> <?php echo $row['customer']; ?></li>
+                                      <li class="list-group-item"><strong>Reference:</strong> <?php echo $row['reference']; ?></li>
+                                      <li class="list-group-item"><strong>Invoice:</strong> <?php echo $row['invoice']; ?></li>
+                                  </ul>
+                              </div>
+                              <div class="col-md-6">
+                                  <ul class="list-group">
+                                      <li class="list-group-item"><strong>Date In:</strong> <?php echo $row['date_in']; ?></li>
+                                      <li class="list-group-item"><strong>Date Out:</strong> <?php echo $row['date_out']; ?></li>
+                                      <li class="list-group-item"><strong>Consignment:</strong> <?php echo $row['consignment']; ?></li>
+                                      <li class="list-group-item"><strong>Notes:</strong> <?php echo $row['notes']; ?></li>
+                                  </ul>
+                              </div>
+                          </div>
+                          <?php
+                      } else {
+                          echo "Job not found.";
+                      }
+                  } else {
+                      echo "Invalid request. Please provide a job ID.";
+                  }
 
-				$conn->close();
-				?>
-            </div>
+                  $conn->close();
+                  ?>
+              </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </section>
 

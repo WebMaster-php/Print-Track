@@ -19,7 +19,7 @@
   <li class="nav-item">
     <a class="nav-link <?php if ($page != 'archieved') { echo 'collapsed'; }?>" href="archieved_jobs.php">
       <i class="ri ri-archive-line"></i>
-      <span>Archieved Jobs</span>
+      <span>Archived Jobs</span>
     </a>
   </li><!-- End jobs Page Nav -->
 
