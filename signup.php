@@ -126,7 +126,13 @@
         </div>
 
       </section>
-
+     
+    </div>
+    <div class="loader" id="loader" style="display:none">
+      <div class="loader-content">
+        <div class="loader-spinner"></div>
+        <p>Loading...</p>
+      </div>
     </div>
   </main><!-- End #main -->
 
@@ -136,6 +142,8 @@
   <script src="assets/js/main.js"></script>
   <script src="https://js.stripe.com/v3/"></script>
   <script src="assets/js/stripe.js" defer></script>
+  <script>
+  </script>
 
 </body>
 
