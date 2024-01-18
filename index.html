@@ -13,15 +13,11 @@
   <link href="assets/img/PrintAndTrack Icon FINAL.png" rel="icon">
   <link href="assets/img/PrintAndTrack Icon FINAL.png" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+	<!-- bootstrap css -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -30,32 +26,40 @@
     <div class="container mt-5">
 	    <div class="row d-flex justify-content-center align-items-center">
 	        <div class="col-md-6">
-	            <form id="regForm">
-	                <h1 id="register">Register</h1>
-	                <div class="all-steps" id="all-steps"> <span class="step"></span> <span class="step"></span> <span class="step"></span> <span class="step"></span> </div>
-	                <div class="tab">
-	                    <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
-	                    <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-	                </div>
-	                <div class="tab">
-	                    <p><input placeholder="City" oninput="this.className = ''" name="dd"></p>
-	                    <p><input placeholder="State" oninput="this.className = ''" name="nn"></p>
-	                </div>
-	                <div class="tab">
-	                    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-	                    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
-	                </div>
-	                <div class="tab">
-	                    <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-	                    <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-	                </div>
-	                <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
-	                    <h3>Thanks for your information!</h3> <span>Your information has been saved! we will contact you shortly!</span>
-	                </div>
-	                <div style="overflow:auto;" id="nextprevious">
-	                    <div style="float:right;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button> </div>
-	                </div>
-	            </form>
+							<h1 class="text-center fs-4"><img src="front/img/PrintAndTrack Logo FINAL.png" alt="PrintAndTrack" style="width:20%;height: auto;"></h1>
+							<form id="signUpForm" action="#!">
+							    <!-- start step indicators -->
+							    <div class="form-header d-flex mb-4"><span class="stepIndicator">Account Setup</span> <span class="stepIndicator">Personal Details</span> <span class="stepIndicator">Payment Details</span></div>
+							    <!-- end step indicators -->
+							    <!-- step one -->
+							    <div class="step">
+							        <p class="text-center mb-4">Create your account</p>
+							        <div class="mb-3"><input type="email" placeholder="Full Name" oninput="this.className = ''" name="fullname" /></div>
+							        <div class="mb-3"><input type="email" placeholder="User Name" oninput="this.className = ''" name="username" /></div>
+							        <div class="mb-3"><input type="email" placeholder="Email Address" oninput="this.className = ''" name="email" /></div>
+							        <div class="mb-3"><input type="password" placeholder="Password" oninput="this.className = ''" name="password" /></div>
+							        <div class="mb-3"><input type="password" placeholder="Confirm Password" oninput="this.className = ''" name="password" /></div>
+							    </div>
+							    <!-- step two -->
+							    <div class="step">
+							        <p class="text-center mb-4">We will never sell it</p>
+							        <div class="mb-3"><input type="text" placeholder="Bussiness Name" oninput="this.className = ''" name="businesname" /></div>
+							        <div class="mb-3"><input type="text" placeholder="Address..." oninput="this.className = ''" name="address" /></div>
+							        <div class="mb-3"><input type="text" placeholder="State..." oninput="this.className = ''" name="state" /></div>
+							        <div class="mb-3"><input type="text" placeholder="Postcode.." oninput="this.className = ''" name="postcode" /></div>
+							        <div class="mb-3"><input type="text" placeholder="phone.." oninput="this.className = ''" name="phone" /></div>
+							    </div>
+							    <!-- step three -->
+							    <div class="step">
+							        <p class="text-center mb-4">Its secure payment you don't worry</p>
+							        <div class="mb-3"><input type="text" placeholder="Cardholder Name" oninput="this.className = ''" name="fullname" /></div>
+							        <div class="mb-3 mt-5"  id="card-element"></div>
+							    </div>
+							    <!-- start previous / next buttons -->
+							    <div class="form-footer d-flex"><button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button></div>
+							    <!-- end previous / next buttons -->
+							</form>
+
 	        </div>
 	    </div>
 	</div>
@@ -71,6 +75,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="js.js" defer></script>
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="assets/js/stripe.js" defer></script>
   <script>
   </script>
 
