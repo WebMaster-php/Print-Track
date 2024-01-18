@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 "customer" => $customer_id,
                 "items" => [
                   [
-                    "plan" => 'Sale',
+                    "price" => 'price_1OYwgGBks4bqOlMTr0nTRBmQ',
                   ],
                 ]
             ]);
@@ -148,7 +148,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (\Stripe\Exception\InvalidRequestException $e) {
          $_SESSION['toastr_message'] = [
                 'type' => 'error', // or 'error', 'warning', 'info'
-                'message' => 'Payment failed: Invalid parameters'
+                'message' => 'Payment failed: Invalid parameters'. $e
             ];
             header("Location: ../signup.php");
     } catch (\Stripe\Exception\AuthenticationException $e) {
